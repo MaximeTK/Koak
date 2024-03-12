@@ -1,0 +1,60 @@
+/*
+** EPITECH PROJECT, 2022
+** main
+** File description:
+** main
+*/
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <unistd.h>
+
+double test(double x) {
+    return (x - 1.0);
+}
+
+double y = 2.0;
+
+void __while_1() {
+    while (y < 10) {
+        y = y * 2;
+    }
+}
+
+void __if_1() {
+    if (y > 10)
+        y = 48;
+}
+
+int main() {
+    __while_1();
+    test(y + 3.0);
+    __if_1();
+    return (y);
+}
+
+/*
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4 //vide
+  %2 = alloca i32, align 4 //alloue la memoire de l'int a
+  %3 = alloca i32, align 4 //aloue la memoire de l'int b
+  store i32 0, i32* %1, align 4 //stock 0
+  store i32 1, i32* %2, align 4 //stock 1 dans l'int a
+  store i32 2, i32* %3, align 4 //stock 2 dans l'int b
+  %4 = load i32, i32* %2, align 4 //charge l'int a
+  %5 = load i32, i32* %3, align 4 //charge l'int b
+  %6 = add nsw i32 %4, %5 //lance la fonction "add" avec %4 et %5 qui sera stocké sur %6
+       sub nsw
+       mul nsw
+       sdiv (pour le /)
+       srem (pour le %)
+  store i32 %6, i32* %2, align 4 //sauvegarde %6 sur la valeur %2
+  %7 = load i32, i32* %2, align 4 //charge la valeur %2 sur %2
+  ret i32 %7 //return %7
+}
+
+slt (<)
+sgt (>)
+sle (<=)
+sge (>=)
+*/

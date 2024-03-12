@@ -1,0 +1,2 @@
+def test ( x : int) : int x + 5;
+test(5);

@@ -1,0 +1,53 @@
+
+@y = global double 2.000000e+00, align 8
+
+define dso_local double @test(double %0) #0 {
+  %2 = alloca double, align 8
+  store double %0, double* %2, align 8
+  %3 = load double, double* %2, align 8
+  %4 = fsub double %3, 1.000000e+00
+  ret double %4
+}
+
+define void @__while_1() #0 {
+  br label %1
+
+1:
+  %2 = load double, double* @y, align 8
+  %3 = fcmp olt double %2, 1.000000e+01
+  br i1 %3, label %4, label %7
+
+4:
+  %5 = load double, double* @y, align 8
+  %6 = fmul double %5, 2.000000e+00
+  store double %6, double* @y, align 8
+  br label %1, !llvm.loop !2
+7:
+  ret void
+}
+
+define void @__if_1() #0 {
+  %1 = load double, double* @y, align 8
+  %2 = fcmp ogt double %1, 1.000000e+01
+  br i1 %2, label %3, label %4
+
+3:
+  store double 4.800000e+01, double* @y, align 8
+  br label %4
+
+4:
+  ret void
+}
+
+define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  store i32 0, i32* %1, align 4
+  call void @__while_1()
+  %2 = load double, double* @y, align 8
+  %3 = fadd double %2, 3.000000e+00
+  %4 = call double @test(double %3)
+  call void @__if_1()
+  %5 = load double, double* @y, align 8
+  %6 = fptosi double %5 to i32
+  ret i32 %6
+}
